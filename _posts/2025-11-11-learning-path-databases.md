@@ -89,7 +89,7 @@ A complete database learning path spans multiple systems:
 
 ---
 
-# 🔰 Beginner Level — CS Bachelor Level
+# 🔰 Beginner Level
 
 **Goal:**  
 Learn SQL basics, relational databases, NoSQL overview, and get hands-on experience.
@@ -206,7 +206,7 @@ A short and accessible overview of distributed thinking — essential context fo
 
 ---
 
-# ⚙️ Intermediate Level — Ready for Real Work
+# ⚙️ Intermediate Level
 
 **Goal:**  
 Understand SQL engine internals, storage engines, transactions, NoSQL internals, and official docs.
@@ -298,7 +298,7 @@ Deep, well-structured, and great for understanding relational engine design.
 
 ---
 
-# 🚀 Advanced Level — Toward Top-tier Engineering & PhD
+# 🚀 Advanced Level
 
 **Goal:**  
 Performance tuning, indexing, internals, distributed storage, and research papers.
