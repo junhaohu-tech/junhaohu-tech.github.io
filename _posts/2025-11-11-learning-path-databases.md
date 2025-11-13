@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: single
+classes: wide
 title: "Database Learning Path"
 date: 2025-11-11
 categories: [learning-path]
