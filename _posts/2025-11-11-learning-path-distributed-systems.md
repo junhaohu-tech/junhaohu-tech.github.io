@@ -1,5 +1,6 @@
 ---
 layout: post
+classes: narrow
 title: "Distributed Systems Learning Path"
 date: 2025-11-11
 categories: [learning-path]
