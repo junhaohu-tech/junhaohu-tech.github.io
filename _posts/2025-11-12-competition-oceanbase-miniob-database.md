@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: single
+classes: wide
 title: "OceanBase MiniOB Database Competition — Solution Analysis"
 date: 2025-11-12
 categories: [competitions]
