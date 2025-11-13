@@ -1,6 +1,6 @@
 ---
 layout: single
-classes: narrow
+classes: wide
 title: "Distributed Systems Learning Path"
 date: 2025-11-11
 categories: [learning-path]
