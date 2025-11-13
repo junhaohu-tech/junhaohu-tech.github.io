@@ -6,95 +6,399 @@ categories: [learning-path]
 excerpt: "A complete roadmap for learning distributed systems — from beginner fundamentals to advanced research and open-source engineering."
 ---
 
-# 🌍 Distributed Systems Learning Path
+Building intuition and skill in **distributed systems** takes time.  
+This roadmap is organized into three levels — **Beginner**, **Intermediate**, and **Advanced** — and is designed for students who eventually want to **do research** or **build real systems** in distributed systems and databases.
 
-## 🧩 Knowledge Structure
+---
 
-Distributed Systems can be divided into four broad categories:
+## 🧩 Big Picture
+
+For the purposes of learning, we can roughly break the space into four areas:
+
+- **Distributed storage** – file systems, databases, key–value stores, table stores  
+- **Distributed computation** – large-scale data processing frameworks  
+- **Distributed communication & coordination** – RPC, consensus, service coordination  
+- **Distributed machine learning** – training and inference at scale  
+
+A solid learning path touches all four, with progressively more depth.
+
+---
+
+## 🧠 Prerequisites
+
+Before diving in:
+
+- Be comfortable with at least one systems-oriented language:  
+  **Go**, **Java**, **C++**, or **Rust** (Python is fine for scripting and prototyping).  
+- Have basic background in:
+  - operating systems (threads, processes, scheduling)  
+  - networking (sockets, RPC, basic protocols)  
+  - data structures and algorithms  
+
+You **don’t** need to be an expert; you will reinforce these along the way.
+
+---
+
+## 🧱 Knowledge Map
 
 ### 1. Distributed Storage
-**Architecture Types**
-- Centralized control node architecture  
-- Fully decentralized (peer-to-peer) architecture  
 
-**System Types**
-- Distributed File Systems  
-- Distributed Databases (complex file systems)  
-- Distributed Key-Value Systems  
-- Distributed Table Systems  
+**Architecture types**
+
+- Central coordinator vs. decentralized peer-to-peer  
+- Shared-nothing vs. shared-storage  
+
+**System families**
+
+- Distributed file systems  
+- Distributed databases  
+- Distributed key–value stores  
+- Distributed table stores and column stores  
+
+---
 
 ### 2. Distributed Computation
+
 - Hadoop MapReduce  
 - Apache Spark  
 - Apache Flink  
-- Comparison: Hadoop vs Spark vs Flink  
+- How they differ in:
+  - execution model  
+  - fault tolerance  
+  - latency vs. throughput trade-offs  
 
-### 3. Distributed Communication
-- RPC frameworks (gRPC, Thrift)  
-- Coordination systems (ZooKeeper, etcd, Raft)
+---
+
+### 3. Distributed Communication & Coordination
+
+- RPC frameworks: gRPC, Thrift  
+- Coordination systems: ZooKeeper, etcd  
+- Consensus protocols: Raft, Paxos, Zab  
+
+---
 
 ### 4. Distributed Machine Learning
+
 - Spark MLlib  
-- Distributed TensorFlow
+- Parameter servers  
+- Distributed TensorFlow / PyTorch  
+- Data-parallel vs. model-parallel patterns  
+
+You don’t need to master all of these at once. The rest of this roadmap gives a sequence of **concrete resources** to follow.
 
 ---
 
-## 🧠 Prerequisite
-- Be fluent in at least one programming language (Go, Python, Java, or C++)  
+# 🧩 Beginner Level — CS Bachelor Level
+
+Goal:  
+> Build core intuition for **replication, consistency, and failure** while implementing small systems.
 
 ---
 
-# 🧩 Beginner Level  — roughly CS-bachelor level
+### 0. High-level overview
 
-| # | Resource | Type / Focus | Link & Description |
-|---|-----------|---------------|--------------------|
-| 0 | **Distributed Systems for Fun and Profit** | Overview | [book.mixu.net/distsys](https://book.mixu.net/distsys/) — A short and highly readable book covering key ideas such as replication, consistency, and design trade-offs behind real-world systems like Dynamo, BigTable, and Hadoop. |
-| 1 | **MIT 6.824 Distributed Systems** | Core Course | [Course page](https://pdos.csail.mit.edu/6.824/schedule.html) • [YouTube](https://www.youtube.com/@6.824) • [Bilibili 1](https://www.bilibili.com/video/BV1x7411M7Sf/) • [Bilibili 2](https://www.bilibili.com/video/BV1CU4y1P7PE/) — The most recommended course. Learn Go ([Go tour](https://go.dev/tour/welcome/1)) and implement labs from scratch: MapReduce, Raft (consensus), replicated key-value servers. |
-| 1′ | **CMU 15-440 Distributed Systems** | Undergraduate Course | [Course homepage](https://www.cs.cmu.edu/~dga/15-440/S14/) — Great undergraduate-level introduction using Go. Recommended sequence: finish 15-440 first, then continue to 15-712. |
-| 1″ | **Cambridge Concurrent and Distributed Systems** | Conceptual Overview | [Course materials](https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/materials.html) • [YouTube playlist](https://www.youtube.com/watch?v=UEAMfLPZZhE&list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB) — Taught by *Martin Kleppmann*, author of *DDIA*. |
-| 2 | **CMU 15-445 Intro to Database Systems** | Databases | [YouTube](https://www.youtube.com/watch?v=vdPALZ-GCfI&list=PLSE8ODhjZXjbj8BMuIrRcacnQh20hmY9g) • [Bilibili](https://www.bilibili.com/video/av85655193/) — Learn about buffer pools, indexes, query optimization, transactions, and MVCC. Labs use **bustub** (C++). Focus on concepts if you’re not a C++ user. |
-| 3 | **Designing Data-Intensive Applications (DDIA)** | Core Reading | [Online book](https://ddia.qtmuniao.com/#/) • [Slides](https://drive.google.com/file/d/1s2MfNjS5RH6DK0gXYMzVZKlzsnacZ6Uq/view) — Explains how and *why* systems like Kafka, Cassandra, and Spanner evolved. Ideal to read after MIT 6.824. |
-| 3′ | **Distributed Systems: Concepts and Design** by Coulouris et al. | Optional | [PDF](https://drive.google.com/file/d/19QgnFpwS5nJHzPC_weV_N9BoBACiC3oc/view) — Textbook reference, good theoretical foundation. |
-| 3″ | **Notes on Distributed Systems for Young Bloods** | Optional | [Article](https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/) — Practical field notes; short and approachable. |
-
+**Distributed Systems for Fun and Profit**  
+- 🔗 <https://book.mixu.net/distsys/>  
+- Short, highly readable book.  
+- Explains key ideas like replication, consistency, and design trade-offs behind systems such as Dynamo, Bigtable, and Hadoop.  
 
 ---
 
-# 🧱 Intermediate Level  — ready for professional work
+### 1. Core course: MIT 6.824 Distributed Systems
 
-| # | Resource | Type / Focus | Link & Description |
-|---|-----------|---------------|--------------------|
-| 1 | **Distributed Systems Theory for the Distributed Systems Engineer** | Paper Roadmap | [Article](https://www.the-paper-trail.org/post/2014-08-09-distributed-systems-theory-for-the-distributed-systems-engineer/) — Summarizes major theoretical results (CAP, FLP, Paxos) with pointers to seminal papers. Great bridge between coursework and research. |
-| 2 | **CMU 15-721 Advanced Database Systems** | Graduate Course | [Course site](https://15721.courses.cs.cmu.edu/spring2020/schedule.html) • [Bilibili](https://www.bilibili.com/video/BV1VE411f7kP/) — Research-style seminar focusing on paper reading and system design. |
-| 2′ | **Stanford CS244b Distributed Systems** | Seminar | [Course site](http://www.scs.stanford.edu/20sp-cs244b/) — Discussion-based course with classic papers and student presentations. |
-| 3 | **Distributed Systems (3rd ed.) — Tanenbaum & van Steen** | Textbook | [Book site](https://www.distributed-systems.net/index.php/books/ds3/) — Nine chapters: Introduction, Architecture, Processes, Communication, Naming, Coordination, Consistency, Fault Tolerance, Security. Comes with Python examples and downloadable figures. |
-| 4 | **Large-Scale Distributed Storage Systems: Principles and Architecture** | Practical Book | [PDF](https://drive.google.com/file/d/1f27FfjzHU9hmwgVKLnUo5LNj-8oOnH6e/view) — Explains high-level designs of different storage systems (file, KV, table) and their bottlenecks. Short and readable. |
-| 4′ | **Nancy Lynch — Distributed Algorithms** | Optional Deep Theory | [PDF](https://drive.google.com/file/d/1h_cbTqzzhIek6qRpkhFLuTaCkqpiBDSF/view) — Theoretical foundation of distributed algorithms; mathematically rigorous and challenging but definitive. |
+- 📄 Course page: <https://pdos.csail.mit.edu/6.824/schedule.html>  
+- 🎥 YouTube: <https://www.youtube.com/@6.824>  
+- 🎥 Bilibili:  
+  - <https://www.bilibili.com/video/BV1x7411M7Sf/>  
+  - <https://www.bilibili.com/video/BV1CU4y1P7PE/>  
 
+**Why this course**
 
----
+- Teaches fundamentals through **Go** implementations.  
+- Labs cover:
+  - MapReduce
+  - Raft consensus
+  - Replicated key–value servers  
+- You will **feel** how failures and timeouts behave in practice.
 
-# 🧬 Advanced Level  — research / top-tier engineering
-
-| # | Resource | Type / Focus | Link & Description |
-|---|-----------|---------------|--------------------|
-| 1 | **The Google & Amazon Papers** | Foundational Papers | [Summary article](https://blog.csdn.net/u011510825/article/details/122816587) • [GFS](https://drive.google.com/file/d/1xPIAG96AC--OpntxPymlMFOgbjOteL1W/view) • [MapReduce](https://drive.google.com/file/d/1km2uZSV0UFcdPsHUOI-rQCwJQxWBQdlw/view) • [Bigtable](https://drive.google.com/file/d/1161vjEDJ33tWqGcATGZ5xpoEkuwwGlwU/view) • [Dynamo](https://drive.google.com/file/d/1RHkdJEEUKYoCJ5_D6jMmkQvORQOVMpu0/view) — These four classics define modern distributed storage and computation. |
-| 2 | **PingCAP TiDB Talent Plan** | Hands-On Practicum | [tidb.net/talent-plan](https://tidb.net/talent-plan) — Build a mini TiDB/TiKV following guided labs. Covers Go/Rust programming, consensus, and distributed database internals. Perfect next step after MIT 6.824. |
-| 3 | **Paper Collections** | Reading Lists | - [Readings in Databases](https://github.com/rxin/db-readings)  <br> - [Awesome Distributed Systems](https://github.com/theanalyst/awesome-distributed-systems)  <br> - [Qix DS list](https://github.com/ty4z2008/Qix/blob/master/ds.md)  <br> - [ascrutae gist](https://gist.github.com/ascrutae/7fbc3681ff6e7f68fc908e196eac980e) |
-| 4 | **Consensus & Transactions Papers** | Deep Dive | - *Raft*: simplified consensus design (see Diego Ongaro’s PhD thesis for full details)  <br> - *ZooKeeper*: introduces Zab consensus protocol  <br> - *Multi-Paxos*: optimization reducing network rounds  <br> - *Percolator*: transactional layer on Bigtable  <br> - *Megastore*: precursor to Spanner using Paxos  <br> - *Consensus on Transaction Commit* (Jim Gray & Lamport): Paxos-based 2-phase commit generalization  <br> - *A Note on Distributed Systems* ([paper](https://citeseerx.ist.psu.edu/doc/10.1.1.41.7628))  <br> - *A Brief Tour of FLP Impossibility* ([link](https://www.the-paper-trail.org/post/2008-08-13-a-brief-tour-of-flp-impossibility/)) |
-| 5 | **Open-Source Projects to Study** | Code Reading | **Storage**: [Hadoop](https://github.com/apache/hadoop) (Java), [SeaweedFS](https://github.com/seaweedfs/seaweedfs) (Go), [MinIO](https://github.com/minio/minio) (Go), [TiDB](https://github.com/pingcap/tidb) (Go)  <br> **Consensus**: [etcd](https://github.com/etcd-io/etcd) (Go), [ZooKeeper](https://github.com/apache/zookeeper) (Java)  <br> **Computation**: [Spark](https://github.com/apache/spark) (Scala), [Flink](https://github.com/apache/flink) (Java), [Ray](https://github.com/ray-project/ray) (Python/C++) |
-| 6 | **Prerequisite Reinforcement** | Background | Revisit computer architecture, OS, and networking fundamentals.|
-
+👉 If you’re new to Go:  
+- Start with the official tour: <https://go.dev/tour/welcome/1>
 
 ---
 
-# 🧭 Summary Table
+### 1′. Optional: CMU 15-440 Distributed Systems
 
-| Level | Description | Goal |
-|-------|--------------|------|
-| **Beginner** | Learn key ideas — replication, consensus, MapReduce — through hands-on labs and core readings. | Build solid intuition and implementation skills. |
-| **Intermediate** | Understand theoretical models and architecture trade-offs in real systems. | Read and discuss academic papers; connect design and theory. |
-| **Advanced** | Implement or contribute to real-world distributed systems. | Achieve research-level or industry-grade expertise. |
+- 📄 Course homepage: <https://www.cs.cmu.edu/~dga/15-440/S14/>  
 
+A solid undergraduate-level course.  
+If you want a smoother ramp-up, one option is:  
+
+> **15-440 → 6.824 → 15-712 (later at intermediate/advanced).**
 
 ---
+
+### 1″. Conceptual complement: Cambridge Concurrent and Distributed Systems
+
+- 📄 Course materials: <https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/materials.html>  
+- 🎥 YouTube playlist: <https://www.youtube.com/watch?v=UEAMfLPZZhE&list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB>  
+
+Taught by **Martin Kleppmann** (author of *Designing Data-Intensive Applications*).  
+Great for developing a clean conceptual model of concurrency and communication.
+
+---
+
+### 2. Database fundamentals: CMU 15-445
+
+**CMU 15-445 Intro to Database Systems**
+
+- 🎥 YouTube: <https://www.youtube.com/watch?v=vdPALZ-GCfI&list=PLSE8ODhjZXjbj8BMuIrRcacnQh20hmY9g>  
+- 🎥 Bilibili: <https://www.bilibili.com/video/av85655193/>  
+
+Covers:
+
+- storage and buffer pool  
+- index structures  
+- query execution  
+- transactions and MVCC  
+
+Labs use **bustub** in C++.  
+If you are not a C++ user, you can still follow lectures and read the code at a higher level.
+
+---
+
+### 3. Core reading: Designing Data-Intensive Applications (DDIA)
+
+**Designing Data-Intensive Applications** by Martin Kleppmann  
+
+- Online copy: <https://ddia.qtmuniao.com/#/>  
+- Slides (one example): <https://drive.google.com/file/d/1s2MfNjS5RH6DK0gXYMzVZKlzsnacZ6Uq/view>  
+
+What you get:
+
+- unified big-picture view of storage, streams, and batch/online systems  
+- explanations for *why* systems like Kafka, Cassandra, and Spanner look the way they do  
+- many concrete design trade-offs and real-world stories  
+
+---
+
+### 3′. Optional textbook: Distributed Systems – Concepts and Design
+
+**Distributed Systems: Concepts and Design** (Coulouris et al.)  
+
+- PDF example: <https://drive.google.com/file/d/19QgnFpwS5nJHzPC_weV_N9BoBACiC3oc/view>  
+
+Contains a traditional textbook treatment of distributed systems.  
+Good as a reference to clarify terms and models.
+
+---
+
+### 3″. Short notes: Notes on Distributed Systems for Young Bloods
+
+- Article: <https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/>  
+
+Short, practical notes on what makes distributed systems hard in real life.
+
+---
+
+# 🧱 Intermediate Level — Ready for Professional Work
+
+Goal:  
+> Connect coursework to **theoretical models** and **real research papers**.
+
+---
+
+### 1. Roadmap paper: Distributed Systems Theory for the Distributed Systems Engineer
+
+- Article: <https://www.the-paper-trail.org/post/2014-08-09-distributed-systems-theory-for-the-distributed-systems-engineer/>  
+
+This is a *paper roadmap* — it lists key results (CAP, FLP, Paxos, etc.) and tells you why they matter for engineers.
+
+---
+
+### 2. Advanced database systems: CMU 15-721
+
+- Course site: <https://15721.courses.cs.cmu.edu/spring2020/schedule.html>  
+- Bilibili: <https://www.bilibili.com/video/BV1VE411f7kP/>  
+
+A graduate-level seminar focusing on:
+
+- reading and presenting papers  
+- understanding the design of modern database systems  
+- thinking like a systems researcher
+
+---
+
+### 2′. Seminar-style DS course: Stanford CS244b
+
+- Course site: <http://www.scs.stanford.edu/20sp-cs244b/>  
+
+Discussion-based, centered around classic and modern distributed systems papers.  
+Good for training your **paper reading + presentation** skills.
+
+---
+
+### 3. Textbook: Distributed Systems (Tanenbaum & van Steen)
+
+- Book site: <https://www.distributed-systems.net/index.php/books/ds3/>  
+
+Nine core chapters:
+
+1. Introduction  
+2. Architecture  
+3. Processes  
+4. Communication  
+5. Naming  
+6. Coordination  
+7. Consistency  
+8. Fault Tolerance  
+9. Security  
+
+Comes with figures and some Python examples.  
+It’s a good “second textbook” once you already know the basics.
+
+---
+
+### 4. Practical storage book: Large-Scale Distributed Storage Systems
+
+- PDF example: <https://drive.google.com/file/d/1f27FfjzHU9hmwgVKLnUo5LNj-8oOnH6e/view>  
+
+Short and practical discussion of:
+
+- different kinds of storage systems  
+- their architectures  
+- where the bottlenecks come from
+
+---
+
+### 4′. Theory deep dive (optional): Nancy Lynch – Distributed Algorithms
+
+- PDF example: <https://drive.google.com/file/d/1h_cbTqzzhIek6qRpkhFLuTaCkqpiBDSF/view>  
+
+Mathematically rigorous and challenging.  
+Best approached once you already have some intuition about consensus and failures.
+
+---
+
+# 🧬 Advanced Level — Research & Top-tier Engineering
+
+Goal:  
+> Read and implement real systems; understand research problems and trade-offs at scale.
+
+---
+
+### 1. The “Google & Amazon” papers
+
+These four papers are foundational:
+
+- **GFS** – Google File System  
+- **MapReduce** – programming model + runtime  
+- **Bigtable** – wide-column storage  
+- **Dynamo** – highly available key–value store  
+
+Example links / collections:
+
+- Overview article (Chinese): <https://blog.csdn.net/u011510825/article/details/122816587>  
+- GFS: <https://drive.google.com/file/d/1xPIAG96AC--OpntxPymlMFOgbjOteL1W/view>  
+- MapReduce: <https://drive.google.com/file/d/1km2uZSV0UFcdPsHUOI-rQCwJQxWBQdlw/view>  
+- Bigtable: <https://drive.google.com/file/d/1161vjEDJ33tWqGcATGZ5xpoEkuwwGlwU/view>  
+- Dynamo: <https://drive.google.com/file/d/1RHkdJEEUKYoCJ5_D6jMmkQvORQOVMpu0/view>  
+
+---
+
+### 2. Hands-on practicum: TiDB Talent Plan
+
+**PingCAP TiDB Talent Plan**
+
+- <https://tidb.net/talent-plan>  
+
+Guided labs to implement components inspired by **TiDB/TiKV** using Go or Rust:
+
+- storage engine  
+- Raft-based replication  
+- simple distributed transactions  
+
+Perfect follow-up after MIT 6.824.
+
+---
+
+### 3. Curated reading lists
+
+Some good collections:
+
+- **Readings in Databases**: <https://github.com/rxin/db-readings>  
+- **Awesome Distributed Systems**: <https://github.com/theanalyst/awesome-distributed-systems>  
+- **Qix DS list**: <https://github.com/ty4z2008/Qix/blob/master/ds.md>  
+- **ascrutae gist** (Chinese notes and links): <https://gist.github.com/ascrutae/7fbc3681ff6e7f68fc908e196eac980e>  
+
+Pick a small set of papers at a time and **write notes** after reading.
+
+---
+
+### 4. Consensus & transactions papers
+
+Examples worth reading (at least in summary):
+
+- **Raft** – understandable consensus; read the paper and optionally the thesis  
+- **ZooKeeper** – Zab protocol; coordination service design  
+- **Multi-Paxos** – practical Paxos in repeated settings  
+- **Percolator** – transaction layer on top of Bigtable  
+- **Megastore** – partitioned stores with per-partition consensus  
+- **Consensus on Transaction Commit** – Paxos-based two-phase commit  
+- **A Note on Distributed Systems**: <https://citeseerx.ist.psu.edu/doc/10.1.1.41.7628>  
+- **A Brief Tour of FLP Impossibility**: <https://www.the-paper-trail.org/post/2008-08-13-a-brief-tour-of-flp-impossibility/>  
+
+For PhD applications, writing **paper notes** on a subset of these is excellent evidence of depth.
+
+---
+
+### 5. Open-source projects to study
+
+You don’t need to understand every line of code. Start by tracing:
+
+- the write path  
+- the read path  
+- how failures are detected and handled  
+
+**Storage:**
+
+- Hadoop: <https://github.com/apache/hadoop> (Java)  
+- SeaweedFS: <https://github.com/seaweedfs/seaweedfs> (Go)  
+- MinIO: <https://github.com/minio/minio> (Go)  
+- TiDB: <https://github.com/pingcap/tidb> (Go)  
+
+**Consensus & coordination:**
+
+- etcd: <https://github.com/etcd-io/etcd> (Go)  
+- ZooKeeper: <https://github.com/apache/zookeeper> (Java)  
+
+**Computation:**
+
+- Spark: <https://github.com/apache/spark> (Scala)  
+- Flink: <https://github.com/apache/flink> (Java)  
+- Ray: <https://github.com/ray-project/ray> (Python/C++)  
+
+---
+
+### 6. Reinforce prerequisites as needed
+
+As you go deeper, it’s normal to circle back to:
+
+- computer architecture  
+- operating systems  
+- networking  
+- compilers / runtimes  
+
+Distributed systems sit on top of all of these.
+
+---
+
+## 🧭 Summary
+
+| Level          | Focus                                             | Main Goal                                      |
+|----------------|---------------------------------------------------|-----------------------------------------------|
+| **Beginner**   | Labs + core concepts (6.824, 15-445, DDIA)        | Build intuition and implementation skills     |
+| **Intermediate** | Paper roadmaps and advanced courses            | Connect theory with real systems              |
+| **Advanced**   | Classic papers, open-source, and research topics | Think and work like a systems researcher/engineer |
+
+This roadmap is not meant to be followed rigidly.  
+Pick a starting point that fits your background, **alternate between theory and implementation**, and write down what you learn — that’s how the knowledge becomes your own.
