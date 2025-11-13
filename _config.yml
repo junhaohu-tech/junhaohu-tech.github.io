@@ -24,9 +24,9 @@ repository               : "https://junhaohu-tech.github.io/"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Junhao Hu"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Aspiring PhD student interested in distributed systems and data-intensive computing. I enjoy building reliable, scalable systems and understanding how storage, replication, and consistency mechanisms shape real-world performance. Always learning, experimenting, and writing about systems."
   location         : "Earth"
   employer         : "Red Brick University"
   uri              : # URL
