@@ -4,7 +4,7 @@ permalink: /
 layout: single
 ---
 
-Hi! I'm **Junhao Hu**, an aspiring PhD student interested in **distributed systems** and **databases**.
+Hi! I'm **JH H**, an aspiring PhD student interested in **distributed systems** and **databases**.
 
 I enjoy thinking about how to:
 - design and build **reliable, fault-tolerant distributed systems**, and  
