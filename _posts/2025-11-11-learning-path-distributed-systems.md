@@ -89,7 +89,7 @@ You don’t need to master all of these at once. The rest of this roadmap gives 
 
 ---
 
-# 🧩 Beginner Level — CS Bachelor Level
+# 🧩 Beginner Level
 
 Goal:  
 > Build core intuition for **replication, consistency, and failure** while implementing small systems.
@@ -201,7 +201,7 @@ Short, practical notes on what makes distributed systems hard in real life.
 
 ---
 
-# 🧱 Intermediate Level — Ready for Professional Work
+# 🧱 Intermediate Level 
 
 Goal:  
 > Connect coursework to **theoretical models** and **real research papers**.
@@ -280,7 +280,7 @@ Best approached once you already have some intuition about consensus and failure
 
 ---
 
-# 🧬 Advanced Level — Research & Top-tier Engineering
+# 🧬 Advanced Level
 
 Goal:  
 > Read and implement real systems; understand research problems and trade-offs at scale.
