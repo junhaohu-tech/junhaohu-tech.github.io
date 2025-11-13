@@ -1,6 +1,7 @@
 ---
+layout: post
 title: "Distributed Systems Learning Path"
-date: 2025-11-12
+date: 2025-11-11
 categories: [learning-path]
 excerpt: "A complete roadmap for learning distributed systems — from beginner fundamentals to advanced research and open-source engineering."
 ---
