@@ -1,4 +1,4 @@
-# Junhao Hu — Notes on Distributed Systems, Databases, and Systems Research
+# JH H — Notes on Distributed Systems, Databases, and Systems Research
 
 This repository hosts my research-oriented technical blog, built on **academicpages**, where I document my readings, experiments, and reflections in **Distributed Systems**, **Database Systems**, and **Operating Systems**.  
 The goal of this site is to build a long-term knowledge base that bridges theory, system design, and hands-on implementations.
